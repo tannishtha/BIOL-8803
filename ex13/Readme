@@ -1,0 +1,15 @@
+1. OverlapLargeBed.pl
+=========================
+
+a) File size : 7.8MB
+   Number of input lines : 54,263
+   
+b) Run time of original overlap script : 64 sec
+   Run time of overlapLargeBed.pl : 74 sec
+   
+
+2. OverlapMT.pl
+==================
+a) File size : Intron.bed - 5.5MB, TE.bed - 101MB
+   Number of lines : Intron.bed - 238869 , TE.bed - 4411767
+
