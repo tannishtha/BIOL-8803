@@ -14,56 +14,56 @@ outputFile=""
 while getopts "a:b:g:o:ezvih" opt
 do
 	case $opt in
-	a)
-	   readFile1=$OPTARG
-	   presentFile1=1
-	   ;;
-	b)
-	   readFile2=$OPTARG
-	   presentFile2=1
-	   ;;
-	g)
-	   referenceFile=$OPTARG
-	   presentReference=1
-	   ;;
-	o)
-	   outputFile=$OPTARG
-	   outputFilePresent=1
-	   ;;
-	e)
-	   dorealign=1
-	   ;;
-	z)
-	   outzipped=1
-	   ;;
-	v)
-	   verbose=1
-	   ;;
-	i)
-	   indexOutFile=1
-	   ;;
-	h)
-	   echo -e "Usage: ./week7.sh [options]"
-	   echo "Options:"
-	   echo -e "-a\tInput read file1(required) "
-	   echo -e "-b\tInput read file2(required) "
-	   echo -e "-g\tReference genome file(required) "
-	   echo -e "-o\tOutput VCF file(required) "
-	   echo -e "-e\tDo reads re-alignment"
-	   echo -e "-z\tGunzip output VCF file"
-	   echo -e "-v\tVerbose Mode"
-	   echo -e "-i\tIndex output BAM file"
-	   echo -e "-h\tPrint usage information" 
-	   exit 1
-	   ;;
-	:) 
-   	  echo "Option $OPTARG requires argument" &>2
-      exit 1
-      ;;
-   \?) 
-      echo "Invalid option" &>2
-      exit 1
-      ;;
+		a)
+	   	readFile1=$OPTARG
+	   	presentFile1=1
+	   	;;
+		b)
+	   	readFile2=$OPTARG
+	   	presentFile2=1
+	   	;;
+		g)
+	   	referenceFile=$OPTARG
+	   	presentReference=1
+	   	;;
+		o)
+	   	outputFile=$OPTARG
+	   	outputFilePresent=1
+	   	;;
+		e)
+	   	dorealign=1
+	   	;;
+		z)
+	   	outzipped=1
+	   	;;
+		v)
+	   	verbose=1
+	   	;;
+		i)
+	   	indexOutFile=1
+	   	;;
+		h)
+	   	echo -e "Usage: ./week7.sh [options]"
+	   	echo "Options:"
+	   	echo -e "-a\tInput read file1(required) "
+	   	echo -e "-b\tInput read file2(required) "
+	   	echo -e "-g\tReference genome file(required) "
+	   	echo -e "-o\tOutput VCF file(required) "
+	   	echo -e "-e\tDo reads re-alignment"
+	   	echo -e "-z\tGunzip output VCF file"
+	   	echo -e "-v\tVerbose Mode"
+	   	echo -e "-i\tIndex output BAM file"
+	   	echo -e "-h\tPrint usage information" 
+	   	exit 1
+	   	;;
+		:) 
+   	  	echo "Option $OPTARG requires argument" &>2
+      	  	exit 1
+          	;;
+   		\?) 
+      	   	echo "Invalid option" &>2
+      		exit 1
+      		;;
 	esac
 done
 
@@ -85,8 +85,8 @@ then
 		if [ ! -e $readFile1 ]
 		then
 			echo "$readFile1 does not exist"
-	     	exit
-	    elif [ ! -e $readFile2 ]
+	     		exit
+	    	elif [ ! -e $readFile2 ]
 		then
 			echo "$readFile2 does not exist"
 			exit
@@ -116,7 +116,6 @@ else
 		echo "Output file name not provided. Please use option -o to input it."
 		exit
 	fi
-	
 fi
 
 #Indexing the reference file so as to prepare it for mapping
@@ -150,7 +149,6 @@ samtools sort -O bam -o lane_sorted.bam -T /tmp/lane_temp lane_fixmate.bam
 #Relignment of raw gapped alignment
 if [ "$dorealign" == 1 ]
 then 
-	
 	# Creating fasta index file for GTAK analysis
 	if [ "$verbose" == 1 ]
 	then 
